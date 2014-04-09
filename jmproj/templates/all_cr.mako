@@ -32,9 +32,9 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+            <![endif]-->
     </head>
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
@@ -174,101 +174,110 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box">
+                        <div class="col-xs-12 col-lg-9 col-sm-8">
+                            <div class="box box-primary">
                                 <div class="box-header">
-                                    <h3 class="box-title">Tous les projets</h3>                                    
+                                    <h3 class="box-title">Les Comptes Rendus</h3>                                    
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive"><form id="table-form">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-            <tr><th>Projet <select name="projet">
-                            <option value="">-- tous --</option>
-                        %for proj in projets:
-                            <option value="${proj}"
-                                    %if projet == proj:
-                                       selected="selected"
-                                    %endif
-                                    >${proj}</option>
-                        %endfor
-                    </select></th><th>Date</th><th>Compte Rendu <input type="text" name="cr_prefix" value="${cr_prefix}"/></th></tr>
-                                        </thead>
-                                        <tbody>
-%for cr in comptes_rendus:
-          <tr><td>${cr.projet}</td><td>${"{0:%d/%m/%Y}".format(cr.date_ecriture.date())}</td><td>${cr.compte_rendu}</td></tr>
-%endfor
-          </tbody>
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr><th>Projet <select name="projet">
+                                                            <option value="">-- tous --</option>
+                                                            %for proj in projets:
+                                                            <option value="${proj}"
+                                                                    %if projet == proj:
+                                                                    selected="selected"
+                                                                    %endif
+                                                                    >${proj}</option>
+                                                            %endfor
+                                                    </select></th><th>Date</th><th>Compte Rendu <input type="text" name="cr_prefix" value="${cr_prefix}"/></th></tr>
+                                            </thead>
+                                            <tbody>
+                                                %for cr in comptes_rendus:
+                                                <tr><td>${cr.projet}</td><td>${"{0:%d/%m/%Y}".format(cr.date_ecriture.date())}</td><td>${cr.compte_rendu}</td></tr>
+                                                %endfor
+                                            </tbody>
                                     </table></form>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                    <div class="col-xs-12 col-lg-3 col-sm-4">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h3 class="box-title">Ajouter Compte Rendu</h3>
+                                
+                            </div>
+                            <div class="box-body">
+                            <form role="form" id="new-form" action="add" method="post">
+                                <div class="form-group">
+                                    <label>Projet:</label>
+                                    <input class="form-control" type="text" name="projet" value="${projet}" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Compte Rendu:</label>
+                                    <textarea class="form-control" name="compte_rendu"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                                
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+            </aside>
 
-  <div id="wrap">
 
-    </section>
-    </aside>
+            <!-- jQuery 2.0.2 -->
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+            <!-- jQuery UI 1.10.3 -->
+            <script src="${request.static_url('jmproj:static/js/jquery-ui-1.10.3.min.js')}" type="text/javascript"></script>
+            <!-- Bootstrap -->
+            <script src="${request.static_url('jmproj:static/js/bootstrap.min.js')}" type="text/javascript"></script>
+            <!-- Morris.js charts -->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+            <script src="${request.static_url('jmproj:static/js/plugins/morris/morris.min.js')}" type="text/javascript"></script>
+            <!-- Sparkline -->
+            <script src="${request.static_url('jmproj:static/js/plugins/sparkline/jquery.sparkline.min.js')}" type="text/javascript"></script>
+            <!-- jvectormap -->
+            <script src="${request.static_url('jmproj:static/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}" type="text/javascript"></script>
+            <script src="${request.static_url('jmproj:static/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}" type="text/javascript"></script>
+            <!-- fullCalendar -->
+            <script src="${request.static_url('jmproj:static/js/plugins/fullcalendar/fullcalendar.min.js')}" type="text/javascript"></script>
+            <!-- jQuery Knob Chart -->
+            <script src="${request.static_url('jmproj:static/js/plugins/jqueryKnob/jquery.knob.js')}" type="text/javascript"></script>
+            <!-- daterangepicker -->
+            <script src="${request.static_url('jmproj:static/js/plugins/daterangepicker/daterangepicker.js')}" type="text/javascript"></script>
+            <!-- Bootstrap WYSIHTML5 -->
+            <script src="${request.static_url('jmproj:static/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}" type="text/javascript"></script>
+            <!-- iCheck -->
+            <script src="${request.static_url('jmproj:static/js/plugins/iCheck/icheck.min.js')}" type="text/javascript"></script>
 
-    <h3>Nouvelle Ecriture</h3>
-    <form id="new-form" action="add" method="post">
-        <label> Projet: <input type="text" name="projet" value="${projet}" /></label><br />
-        <label> Compte Rendu: <textarea name="compte_rendu"></textarea></label> <br />
-        <input type="submit" value="Ajouter" />
-               
-    </form>
-    <div id="footer" style="margin-top:40px">
-        <div class="footer">&copy; Copyright 2008-2012, Agendaless Consulting.</div>
-    </div>
+            <!-- DATA TABLES SCRIPT -->
+            <script src="${request.static_url('jmproj:static/js/plugins/datatables/jquery.dataTables.js')}" type="text/javascript"></script>
+            <script src="${request.static_url('jmproj:static/js/plugins/datatables/dataTables.bootstrap.js')}" type="text/javascript"></script>
 
-        <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <!-- jQuery UI 1.10.3 -->
-        <script src="${request.static_url('jmproj:static/js/jquery-ui-1.10.3.min.js')}" type="text/javascript"></script>
-        <!-- Bootstrap -->
-        <script src="${request.static_url('jmproj:static/js/bootstrap.min.js')}" type="text/javascript"></script>
-        <!-- Morris.js charts -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="${request.static_url('jmproj:static/js/plugins/morris/morris.min.js')}" type="text/javascript"></script>
-        <!-- Sparkline -->
-        <script src="${request.static_url('jmproj:static/js/plugins/sparkline/jquery.sparkline.min.js')}" type="text/javascript"></script>
-        <!-- jvectormap -->
-        <script src="${request.static_url('jmproj:static/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}" type="text/javascript"></script>
-        <script src="${request.static_url('jmproj:static/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}" type="text/javascript"></script>
-        <!-- fullCalendar -->
-        <script src="${request.static_url('jmproj:static/js/plugins/fullcalendar/fullcalendar.min.js')}" type="text/javascript"></script>
-        <!-- jQuery Knob Chart -->
-        <script src="${request.static_url('jmproj:static/js/plugins/jqueryKnob/jquery.knob.js')}" type="text/javascript"></script>
-        <!-- daterangepicker -->
-        <script src="${request.static_url('jmproj:static/js/plugins/daterangepicker/daterangepicker.js')}" type="text/javascript"></script>
-        <!-- Bootstrap WYSIHTML5 -->
-        <script src="${request.static_url('jmproj:static/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}" type="text/javascript"></script>
-        <!-- iCheck -->
-        <script src="${request.static_url('jmproj:static/js/plugins/iCheck/icheck.min.js')}" type="text/javascript"></script>
+            <!-- AdminLTE App -->
+            <script src="${request.static_url('jmproj:static/js/AdminLTE/app.js')}" type="text/javascript"></script>
 
-        <!-- DATA TABLES SCRIPT -->
-        <script src="${request.static_url('jmproj:static/js/plugins/datatables/jquery.dataTables.js')}" type="text/javascript"></script>
-        <script src="${request.static_url('jmproj:static/js/plugins/datatables/dataTables.bootstrap.js')}" type="text/javascript"></script>
-
-        <!-- AdminLTE App -->
-        <script src="${request.static_url('jmproj:static/js/AdminLTE/app.js')}" type="text/javascript"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#search-form").find("input,select").change(function() {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                $("#search-form").find("input,select").change(function() {
                 $("#search-form").submit();
-            });
+                });
                 $("table.table").dataTable({
-                    "bPaginate": true,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": true,
-                    "bInfo": true,
-                    "bAutoWidth": true
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": true
                 }).find("th input,th select").click(function(ev,ui) { ev.preventDefault(); return false;}).change(function() {
-        $("#table-form").submit();
-        });
+                $("#table-form").submit();
+                });
 
-        });
-    </script>
-</body>
+                });
+            </script>
+    </body>
 </html>
