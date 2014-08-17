@@ -1,0 +1,17 @@
+*.pyc
+*.egg-info
+.ropeproject
+*.swp
+dist
+build
+crimson/VERSION.txt
+crimson_models/crimson_models.egg-info
+crimson_scripts/crimson_scripts.egg-info
+ibm_db_sa/ibm_db_sa.egg-info
+jpj/jpj.egg-info
+*.*~
+*~
+\#*\#
+\#*.*\#
+*.orig
+*$py.class
