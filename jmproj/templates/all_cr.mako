@@ -195,7 +195,7 @@
                                             </thead>
                                             <tbody>
                                                 %for cr in comptes_rendus:
-                                                <tr><td>${cr.projet}</td><td>${"{0:%d/%m/%Y}".format(cr.date_ecriture.date())}</td><td>${cr.compte_rendu}</td></tr>
+                                                <tr><td>${cr.projet}</td><td>${"{0:%d/%m/%Y}".format(cr.date_ecriture.date()) if cr.date_ecriture else ""}</td><td>${cr.compte_rendu}</td></tr>
                                                 %endfor
                                             </tbody>
                                     </table></form>
